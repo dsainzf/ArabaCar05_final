@@ -1,0 +1,52 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15 dic. 2020, 20:04:28
+    Author     : diego
+*/
+
+html{
+	color: black;
+	background-color: aliceblue;
+}
+
+body, .container, .row{
+	color: black;
+	background-color: transparent;
+}
+
+.navbar{
+    background-color: #75FF00;
+}
+
+.formulario{
+    background-color: #33FF00;
+}
+
+.verde{
+    background-color: greenyellow!important;
+}
+
+.navbar .datosusuario{
+    display: flex;
+    padding-left: 0;
+}
+
+.navbar .datosusuario img{
+    max-height: 46px;
+    margin-left: 15px;
+}
+
+.navbar .logo{
+    align-self: center;
+    text-align: center;
+}
+
+
+
+.navbar a img{
+    width: 250px;
+}
