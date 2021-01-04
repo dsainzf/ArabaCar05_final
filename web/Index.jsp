@@ -25,7 +25,7 @@
                 logueado = (Boolean) session.getAttribute("logueado");
                 String nombre = (String) session.getAttribute("nombre");
                 String imagen = (String) session.getAttribute("imagen");
-                String em = (String) session.getAttribute("email");
+                String em = (String) session.getAttribute("email1");
                 
                 if(em == null){
                     nombre = "";
