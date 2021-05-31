@@ -36,7 +36,7 @@
                     <p>Email: <input type="text" class="form-control" id="email" name="email" required></p>
                     <p>Contrase&ntilde;a: <input type="password" class="form-control" id="contrasenia" name="contrasenia" required></p>
                     <input type="button" class="btn btn-primary mt-3" id="crearCuenta" value="Crear cuenta">
-                    <input type="submit" name="btnLogin" class="btn btn-light float-right mt-3" value="Entrar">
+                    <a href="Index.jsp"><input type="submit" name="btnLogin" class="btn btn-light float-right mt-3" value="Entrar"></a>
                 </form>
             </div>
         </div>

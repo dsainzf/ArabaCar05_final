@@ -35,7 +35,7 @@
                 </div>
         </div>
         </nav>  
-        <div class="row justify-content-center buscadorViajes ">
+        <div class="row justify-content-center buscadorViajes">
             <div class="w-auto d-flex formulario">
             <form action="Controlador" method="doPost">
                 <select id="origen" class="form-control w-auto" name="origen" required>

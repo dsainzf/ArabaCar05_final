@@ -22,13 +22,13 @@ body, .container, .row{
     background-color: #75FF00;
 }
 
-.formulario{
+/*.formulario{
     background-color: #33FF00;
 }
 .form-control{
     background-color: white;
     color: black;
-}
+}*/
 .table tr:hover{
     background-color: deepskyblue;
 }
@@ -97,15 +97,16 @@ body, .container, .row{
 
 .buscadorViajes{
     margin-top: 20px;
+    align-self: center;
 }
 
 .buscadorViajes .form-control{
     margin: 0 10px;
 }
 
-#buscarViajes{
+/*#buscarViajes{
     margin: 0 10px;
-}
+}*/
 
 .table{
     text-align: center;
@@ -117,4 +118,7 @@ body, .container, .row{
 
 .table tr{
     cursor: pointer;
+}
+.botonBuscar{
+    margin: 100px;
 }

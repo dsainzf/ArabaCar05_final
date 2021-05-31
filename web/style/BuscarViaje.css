@@ -19,6 +19,7 @@ body, .container, .row{
 
 .navbar{
     background-color: #75FF00;
+    align-content: center;
 }
 
 .formulario{
@@ -97,6 +98,7 @@ body, .container, .row{
 
 .buscadorViajes{
     margin-top: 20px;
+    margin-left: 50px;
 }
 
 .buscadorViajes .form-control{
@@ -119,3 +121,4 @@ body, .container, .row{
     cursor: pointer;
 }
 
+    
