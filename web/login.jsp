@@ -15,7 +15,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style/login.css">
-        <script src="js/login.js" type="text/javascript"></script>
+        <!--<script src="js/login.js" type="text/javascript"></script>-->
        <!-- <script src="js/general.js" type="text/javascript"></script>-->
     </head>
     <body>
@@ -32,11 +32,12 @@
         <div class="container registro">
             <div class="col-lg-6 formulario mx-auto">
                 <h1 class="text-center">Login</h1>
-                <form id="formLogin" class="form-group" onsubmit="login(); return false;" action="Controlador" method="doPost">
+                <form id="formLogin" class="form-group" action="login" onsubmit="login; return false;" method="doPost">
                     <p>Email: <input type="text" class="form-control" id="email" name="email" required></p>
                     <p>Contrase&ntilde;a: <input type="password" class="form-control" id="contrasenia" name="contrasenia" required></p>
                     <input type="button" class="btn btn-primary mt-3" id="crearCuenta" value="Crear cuenta">
-                    <a href="Index.jsp"><input type="submit" name="btnLogin" class="btn btn-light float-right mt-3" value="Entrar"></a>
+                    <input type="submit" name="btnLogin" class="btn btn-light float-right mt-3" value="Entrar">
+                    <!--<button class="btn btn-light float-right mt-3" id="boton" >Entrar</button>-->
                 </form>
             </div>
         </div>
