@@ -7,10 +7,28 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    
+    <%
+        if (request.getSession().getAttribute("email") != null) {
+            out.println("<script>");
+            out.println("window.onload = function (){    limpiar();};function limpiar() {    $('a').remove('#4'); }");
+            out.println("<script>");
+        }
+    %>
+    
+    <script>
+        function checkIt(id) {
+            if ("¿Quieres apuntarte al viaje?" + " con id: " + id) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inicio</title>
+        <title>Arabacar | Busca tu viaje</title>
         <link rel="icon" type="images/png" href="images/ArabaCar05.PNG">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -54,6 +72,7 @@
                 </select>
                 <br>
                 <br>
+                
                 <input type="datetime-local" class="form-control w-auto" id="fechaHora" name="fechaHora" required>
                 <br>
                 <br>

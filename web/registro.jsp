@@ -46,7 +46,7 @@
         <div class="container registro">
             <div class="col-lg-6 formulario mx-auto">
                 <h1 class="text-center">Registro</h1>
-                <form id="formRegistro" class="form-group" onsubmit="guardarUsuario(); return false;" action="Controlador" method="post">
+                <form id="formRegistro" class="form-group" action="registro" method="post">  <!--onsubmit="guardarUsuario(); return false;"--> 
                     <p>Nombre: <input type="text" class="form-control" id="nombre" name="nombre" required></p>
                     <p>Apellido: <input type="text" class="form-control" id="apellido" name="apellido" required></p>
                     <p>DNI: <input type="text" class="form-control" id="dni" name="dni" required></p>
