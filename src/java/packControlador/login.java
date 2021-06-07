@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,33 +25,43 @@ import utils.BD;
  * @author imano
  */
 public class login extends HttpServlet {
-    
+
     private Connection conn;
-    
+    private Statement st, stmt; //sentencia SQL
+    private ResultSet rs, rs2; //el resultado de la sentencia
+
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+
+        conn = BD.getConexion();
+    }
+
     private int existeUsuario(String email) {
-        
+
         int cont = 0;
-        
+
         try {
-            
-            Statement stmt = conn.createStatement();
-            
+
+            stmt = conn.createStatement();
+
             //NO publica viaje si ya existe ese mismo viaje
             String query = "select * from ususarios where Email = '" + email + "';";
-            
-            ResultSet rs2 = stmt.executeQuery(query);
-            
+
+            rs2 = stmt.executeQuery(query);
+
             System.out.println(query);
-            
+
             if (rs2.next()) {
                 cont = 1;
                 System.out.println("ENCONTRADO TRUE");
+            } else {
+                System.out.println(" NO ENCONTRADO");
             }
         } catch (SQLException e) {
-            cont = -1;
+            System.out.println("ERROR");
         }
         return cont;
-        
+
     }
 
     /**
@@ -65,80 +76,64 @@ public class login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        conn = BD.getConexion();
-        Statement st; //sentencia SQL
-        ResultSet rs; //el resultado de la sentencia
-        
+
         String correo = request.getParameter("email");
         String contra = request.getParameter("contrasenia");
-        
+
         System.out.println("El correo del formulario: " + correo);
         System.out.println("la contraseña del formulario: " + contra);
-        
-        if (existeUsuario(correo) == 1){
-            
-            try {
-                st = conn.createStatement();
-                rs = st.executeQuery("select Email, Contraseña, Marca_Modelo from ususarios");
-                
-                while (rs.next()){
-                    
-                    String email = rs.getString("email");
-                    String password = rs.getString("contrasenia");
-                    
-                    if (correo.equals(email)) {
-                        
-                        if(contra.equals(password)) {
-                            
-                            System.out.println("Dentro de la BD");
-                            
-                            HttpSession s = request.getSession();
-                            
-                            s.setAttribute("email", email);
-                            s.setAttribute("contrasenia", password);
-                            
-                            if(!rs.getString("MarcaModelo").equals("")){
-                                s.setAttribute("MarcaModelo", rs.getString("MarcaModelo"));
-                                System.out.println("El coche:" + rs.getString("MarcaModelo") + ":");
-                            }
-                            
-                            response.sendRedirect("Index.jsp");
-                            break;
-                        } else {
-                            //El email no existe
-                            request.setAttribute("Aviso", "La clave es incorrecta");
-                            RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                            rd.include(request, response);
-                            break;
+
+        //if (existeUsuario(correo) == 1){
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select Email, Contraseña, Marca_Modelo from usuarios where Email = '" + correo + "';");
+
+            if (rs.next()) {
+
+                String email = rs.getString("Email");
+                String password = rs.getString("Contraseña");
+
+                if (correo.equals(email)) {
+
+                    if (contra.equals(password)) {
+
+                        System.out.println("Dentro de la BD");
+
+                        HttpSession s = request.getSession();
+
+                        s.setAttribute("email", email);
+                        s.setAttribute("contrasenia", password);
+
+                        if (!rs.getString("Marca_Modelo").equals("")) {
+                            s.setAttribute("Marca_Modelo", rs.getString("Marca_Modelo"));
+                            System.out.println("El coche:" + rs.getString("Marca_Modelo") + ":");
                         }
-                }
-                }
+
+                        response.sendRedirect("Index.jsp");
+
+                    } else {
+                        
+                        request.setAttribute("Aviso", "La clave es incorrecta");
+                        RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                        rd.forward(request, response);
+
+                    }
+                } else {
+                    request.setAttribute("Aviso", "El email es incorrecta");
+                    RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                    rd.forward(request, response);
+                } 
                 
-                rs.close();
-                st.close();
-            } catch (SQLException ex) {
-                System.out.println(ex);
-            }
         } else {
             //El email no existe
             request.setAttribute("Aviso", "El email no esta registrado");
-            RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-            rd.include(request, response);
+            RequestDispatcher rd = request.getRequestDispatcher("registro.jsp");
+            rd.forward(request, response);
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
-        
-        /*try (PrintWriter out = response.getWriter()) {
-             TODO output your page here. You may use following sample code. 
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet login</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet login at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

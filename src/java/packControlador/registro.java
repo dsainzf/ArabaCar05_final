@@ -5,6 +5,7 @@
  */
 package packControlador;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -20,6 +21,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import utils.BD;
 
@@ -40,7 +42,7 @@ public class registro extends HttpServlet {
         conn = BD.getConexion();
     }
     
-    private boolean existeUsuario(String email) {
+    /*private boolean existeUsuario(String email) {
         boolean enc = false;
         try {
             String query = "SELECT * FROM usuarios WHERE Email = '" + email + "'";
@@ -54,7 +56,7 @@ public class registro extends HttpServlet {
             e.printStackTrace();
         }
         return enc;
-    }
+    }*/
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -69,55 +71,64 @@ public class registro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String email = request.getParameter("email");
+        HttpSession s = request.getSession(true);
         
-        if(existeUsuario(email)) {
-            request.setAttribute("Aviso", "Ya existe un usuario con estos mismos datos");
-            
-        } else {
-            
-            try {
-                
-                String query = "INSERT INTO usuarios (`DNI`,`Email`,`Contraseña`,`Nombre`,`Apellido`,`Foto`,`movil`,`Marca_Modelo`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
-                
-                pst = conn.prepareStatement(query);
-                
-                String dni = request.getParameter("dni");
-                pst.setString(1, dni);
-                
-                pst.setString(2, email);
-                
-                String pwd = request.getParameter("contrasenia");
-                pst.setString(3, pwd);
-                
-                String nombre = request.getParameter("nombre");
-                pst.setString(4, nombre);
-                
-                String apellido = request.getParameter("apellido");
-                pst.setString(5, apellido);
-                
-                String foto = request.getParameter("foto");
-                pst.setString(6, foto);
-                
-                Part filePart = request.getPart("foto");
-                InputStream inputStream = filePart.getInputStream();
-                pst.setBlob(6, inputStream);
-                
-                String Marca_Modelo = request.getParameter("Marca_Modelo");
-                pst.setString(8, Marca_Modelo);
-                
-                int num = pst.executeUpdate();
-                
-                if (num != 0) {
-                    request.setAttribute("AvisoUsuario", "Usuario agregado correctamente");
+        s.setAttribute("existeCorreo", "");
+        s.setAttribute("existeDNI", "");
+        
+        String nombre = (String) request.getParameter("nombre");
+        String apellido = (String) request.getParameter("apellido");
+        String correo = (String) request.getParameter("email");
+        String contra = (String) request.getParameter("contrasenia");
+        String DNI = (String) request.getParameter("dni");
+        File Foto = null;
+        //int movil = Integer.parseInt(request.getParameter("movil"));
+        int edad = Integer.parseInt(request.getParameter("edad"));
+        String coche = (String) request.getParameter("MarcaModelo");
+        
+        String cad;
+        boolean existeCorreo = false;
+        boolean existeDNI = false;
+        
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT * FROM usuarios");
+            while (rs.next() && !existeCorreo && !existeDNI) {
+                cad = rs.getString("Email");
+                cad = cad.trim();
+                if(cad.compareTo(correo.trim()) == 0) {
+                    existeCorreo = true;
+                } else {
+                    cad = rs.getString("DNI");
+                    cad = cad.trim();
+                    if (cad.compareTo(DNI.trim()) == 0) {
+                        existeDNI = true;
+                    }
                 }
-                
-            } catch (SQLException ex) {
-                request.setAttribute("Aviso", "Error inesperado");
-                Logger.getLogger(registro.class.getName()).log(Level.SEVERE, null, ex);
             }
+            rs.close();
+            
+            if(existeCorreo){
+                System.out.println("existecorreo");
+                s.setAttribute("existeCorreo", "true");
+            }
+            else if(existeDNI){
+                s.setAttribute("existeDNI", "true");
+            }
+            else {
+                s.setAttribute("existo", "true");
+                st.executeUpdate("INSERT INTO usuarios (`DNI`,`Email`,`Contraseña`,`Nombre`,`Apellido`,`Foto`,`movil`,`Marca_Modelo`) VALUES ( '"+DNI+"', '"+correo+"', '"+contra+"', '"+nombre+"', '"+apellido+"', '"+Foto+"', '"+636330751+"', '"+coche+"');");
+                
+            }
+            st.close();
+           
+        } catch (SQLException ex1) {
+            System.out.println("No lee de la tabla usuarios. " + ex1);
         }
-        request.getRequestDispatcher("registro.jsp").forward(request, response);
+        
+        response.sendRedirect("login.jsp");
+        
+        //request.getRequestDispatcher("Index.jsp").forward(request, response);
         
         /*try (PrintWriter out = response.getWriter()) {
             TODO output your page here. You may use following sample code. 

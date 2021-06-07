@@ -41,5 +41,14 @@
                 </form>
             </div>
         </div>
+        <section id="form-box">  
+            <%
+                String usuario = (String) request.getAttribute("Aviso");
+                if (usuario == null) {
+                    usuario = "";
+                }
+
+            %>
+        </section>  
     </body>
 </html>
