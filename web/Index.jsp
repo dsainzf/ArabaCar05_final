@@ -67,7 +67,7 @@
                 if (s.getAttribute("email") != null) {
                     
                     stName = conn.createStatement();
-                    rsName = stName.executeQuery("select * from usuario where email = '" + e + "'");
+                    rsName = stName.executeQuery("select * from usuarios where email = '" + e + "'");
                     rsName.next();
                     
                     n = rsName.getString("nombre");

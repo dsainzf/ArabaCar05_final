@@ -100,7 +100,7 @@ public class login extends HttpServlet {
                             
                             if(!rs.getString("MarcaModelo").equals("")){
                                 s.setAttribute("MarcaModelo", rs.getString("MarcaModelo"));
-                                System.out.println("hola:" + rs.getString("MarcaModelo") + ":");
+                                System.out.println("El coche:" + rs.getString("MarcaModelo") + ":");
                             }
                             
                             response.sendRedirect("Index.jsp");
