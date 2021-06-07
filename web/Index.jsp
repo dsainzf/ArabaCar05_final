@@ -23,16 +23,16 @@
             out.println("window.onload = function (){    limpiar();};function limpiar() {    $('div').remove('#0');    $('div').remove('#5');    $('div').remove('#6');}");
             out.println("</script>");
             
-            System.out.println(request.getSession().getAttribute("coche") + "<=coche 1");
+            System.out.println(request.getSession().getAttribute("MarcaModelo") + "<=coche 1");
             
         } else if (s.getAttribute("marcaModelo") == null){
-            System.out.println(request.getSession().getAttribute("coche") + "<=coche 2");
+            System.out.println(request.getSession().getAttribute("MarcaModelo") + "<=coche 2");
 
             out.println("<script>");
             out.println("window.onload = function (){    limpiar();    };function limpiar() {          $('a').remove('#1_1');    $('a').remove('#1_2');   $('a').remove('#1_3');    $('a').remove('#4');          $('div').remove('#5');          $('h1').remove('#7');}");
             out.println("</script>");
         } else if (s.getAttribute("marcaModelo") != null){
-            System.out.println(request.getSession().getAttribute("coche") + "<=coche 3");
+            System.out.println(request.getSession().getAttribute("MarcaModelo") + "<=coche 3");
 
             out.println("<script>");
             out.println("window.onload = function (){    limpiar();    };function limpiar() {    $('a').remove('#4');    $('h1').remove('#7');}");
@@ -67,10 +67,10 @@
                 if (s.getAttribute("email") != null) {
                     
                     stName = conn.createStatement();
-                    rsName = stName.executeQuery("select * from usuarios where email = '" + e + "'");
+                    rsName = stName.executeQuery("select * from usuarios where Email = '" + e + "'");
                     rsName.next();
                     
-                    n = rsName.getString("nombre");
+                    n = rsName.getString("Nombre");
                     n = "Hola" + n;
                     //System.out.println("Bienvenido/a " + n);
                     //el nombre se mostrará en el label que viene despues

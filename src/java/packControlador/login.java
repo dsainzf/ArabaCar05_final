@@ -104,13 +104,14 @@ public class login extends HttpServlet {
                         s.setAttribute("email", email);
                         s.setAttribute("contrasenia", password);
 
-                        if (!rs.getString("Marca_Modelo").equals("")) {
+                        if (!rs.getString("Marca_Modelo").equals("") && !rs.getString("Marca_Modelo").equals("null")) {
                             s.setAttribute("Marca_Modelo", rs.getString("Marca_Modelo"));
-                            System.out.println("El coche:" + rs.getString("Marca_Modelo") + ":");
+                            System.out.println("El coche:" + rs.getString("Marca_Modelo"));
+                            response.sendRedirect("ConductorLogueado.jsp");
+                        } else {
+                            response.sendRedirect("PasajeroLogueado.jsp");
                         }
-
-                        response.sendRedirect("Index.jsp");
-
+                        
                     } else {
                         
                         request.setAttribute("Aviso", "La clave es incorrecta");
