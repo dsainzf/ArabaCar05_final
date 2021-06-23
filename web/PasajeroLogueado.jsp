@@ -66,7 +66,7 @@
                 <p id="saludo"><%=n%> </p>
                 <ul>
                     <li><a id="cerrarSesion" onclick="cerrarSesion()">Cerrar sesión</a></li>
-                    <li><a href="Reservas.jsp">Ver mis reservas</a></li>
+                    <li><a href="ReservasPasajero.jsp">Ver mis reservas</a></li>
                     <li><a class="active" href="PasajeroLogueado.jsp" id="arabacarPasajero">ArabaCar</a></li>
                 </ul>  
             </nav>

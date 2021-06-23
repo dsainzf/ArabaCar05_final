@@ -1,0 +1,115 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23-jun-2021, 0:25:39
+    Author     : imano
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(../resources/fondo.jpg);
+    background-size: 20%;
+}
+
+.registro{
+    width: 550px;
+    background: #24303c; 
+    padding: 30px;
+    margin: auto;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    border-radius: 25px;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+}
+
+h4{
+    font-size: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+    position:inherit;
+
+}
+
+.controles{
+    width: 70%;
+    background: #24303c;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 16px;
+    margin-left: 10px;
+    margin-right: 20px;
+    border: 1px solid #1f53c5;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: white;
+    float:right;
+}
+
+p{
+    height: 40px;
+    text-align: left;
+    font-size: 18px;
+    line-height: 40px;
+    margin: 40px;
+    margin-left: 5px;
+} 
+
+.boton{
+    width: 170px;
+    background: #6633ff;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 16px;
+    border: 1px solid white;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    margin-left: 150px;
+}
+
+.boton:hover{
+    background-color: white;
+    color: #000;
+    border: 1px solid #1f53c5;
+}
+
+.login{
+    width: 550px;
+    background: #24303c; 
+    padding: 30px;
+    margin: auto;
+    margin-top: 190px;
+    border-radius: 25px;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+}
+
+#inputFile1{
+    margin-top: 10px;
+    margin-right: 20px;
+    font-family: 'calibri';
+    font-size: 14px;
+    color: white;
+    float:right;
+}
+
+#img1{
+    margin-left: 190px;
+    width: 120px;
+}
+
+#img1:hover{
+    transform:scale(1.5);
+}

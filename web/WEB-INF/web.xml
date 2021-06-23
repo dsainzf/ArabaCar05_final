@@ -12,6 +12,10 @@
         <servlet-name>registro</servlet-name>
         <servlet-class>packControlador.registro</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PublicarViaje</servlet-name>
+        <servlet-class>packControlador.PublicarViaje</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BD</servlet-name>
         <url-pattern>/ViajesDisponibles</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>registro</servlet-name>
         <url-pattern>/registro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PublicarViaje</servlet-name>
+        <url-pattern>/PublicarViaje</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

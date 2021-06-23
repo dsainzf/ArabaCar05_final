@@ -67,7 +67,7 @@
               <ul>
                 <li><a id="cerrarSesion" onclick="cerrarSesion()">Cerrar sesión</a></li>
                 <li><a href="ReservasConductor.jsp">Ver mis reservas</a></li>
-                <li><a href="ViajesPublicados.jsp">Ver mis viajes publicados</a>
+                <li><a href="VerViajesPublicados.jsp">Ver mis viajes publicados</a>
                 </li><li><a href="PublicarViaje.jsp" >Publicar viaje</a></li>  
                 <li><a class="active" href="ConductorLogueado.jsp" id="arabacar">ArabaCar</a></li>
               </ul>  

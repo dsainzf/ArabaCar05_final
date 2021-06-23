@@ -108,16 +108,16 @@
                     <a href="registro.jsp">Registrarse</a>
                     <!--<input class="float-right btn btn-light" type="button" id="login" value="Login">-->
                     <a href="login.jsp">login</a>
-                    <input class="float-right btn btn-light" type="button" id="cerrarSesion" value="Cerrar sesion">
-                    <input class="float-right btn btn-light" type="button" id="crearViaje" value="Crear viaje">
+                    <!--<input class="float-right btn btn-light" type="button" id="cerrarSesion" value="Cerrar sesion">-->
+                    <!--<input class="float-right btn btn-light" type="button" id="crearViaje" value="Crear viaje">-->
                     <!--<input class="float-right btn btn-light" type="button" id="viajesP" value="Mis Viajes">-->
-                    <a href="verViajesC.jsp">Mis Viajes </a>
+                    <!--<a href="verViajesC.jsp">Mis Viajes </a>-->
                 </div>
             </div>
         </nav>  
-        <!--<div class="row justify-content-center buscadorViajes ">
+        <!-- cuiadado con este div--> <div class="row justify-content-center buscadorViajes ">
             <div class="w-auto d-flex formulario">
-            <form action="Controlador" method="doPost">
+            <form action="BuscarViaje" method="post">
                 <select id="origen" class="form-control w-auto" name="origen" required>
                     <option value="">-Origen-</option>
                     <option id="vitoriaO" value="vitoria">Vitoria</option>
@@ -130,11 +130,11 @@
                     <option id="bilbaoD" value="bilbao">Bilbao</option>
                     <option id="donostiaD" value="donostia">Donostia</option>
                 </select>
-                <input type="datetime-local" class="form-control w-auto" id="fechaHora" name="fechaHora" required>
+                <input type="date" class="form-control w-auto" id="fechaHora" name="fecha" required>
                 <input type="submit" class="btn btn-light" id="buscarViajes" value="Buscar viajes"> 
             </div>
             </form>
-        </div>-->
+        </div>
         <div class="row justify-content-center buscadorViajes">
             <div class="w-auto">
                 <table class="formulario table" id="tabla"></table>
@@ -142,7 +142,6 @@
         </div>
         <h1 align="center"> ¡Encuentra tu viaje con ArabaCar!</h1>
         <div>
-            <a href="BuscarViaje.jsp"><input type="button" id="BuscarViaje" value="Busca tu viaje" class="row justify-content-center botonBuscar"></a>
             </div>  
         <img class="centrado" src="images/carretera.png" alt="Solvetic">
     </body>
