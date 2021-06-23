@@ -27,7 +27,7 @@ and open the template in the editor.
        margin:0;
        padding: 0;
        overflow: hidden;
-       background-color: #333333;
+       background-color: aliceblue;
        position: fixed;
        top: 0;
        width: 100%;
@@ -51,7 +51,7 @@ and open the template in the editor.
 }
 #navegador li a:hover{
     background-color: lightgray;
-    color: #333333;
+    color: aliceblue;
 }
 #navegador li a.active {
     background-color: blueviolet;
@@ -87,7 +87,7 @@ body{
     margin-top: 100px;
     font-size: 50px;
     line-height: 150px;
-    background: #9999ff;
+    background: greenyellow;
     color: white;
     width: 500px;
     border-radius: 25px;

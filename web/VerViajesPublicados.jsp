@@ -137,7 +137,7 @@
                         origen = rs.getString("Origen");
                         destino = rs.getString("Destino");
                         fecha = rs.getString("Fecha_Salida");
-                        hora = rs.getString("horaSalida");
+                        hora = rs.getString("Hora_Salida");
                         precio = rs.getFloat("precio");
             %>                         
             <div id='listaviaje'>

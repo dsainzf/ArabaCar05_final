@@ -16,6 +16,10 @@
         <servlet-name>PublicarViaje</servlet-name>
         <servlet-class>packControlador.PublicarViaje</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscarViaje</servlet-name>
+        <servlet-class>packControlador.BuscarViaje</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BD</servlet-name>
         <url-pattern>/ViajesDisponibles</url-pattern>
@@ -31,6 +35,14 @@
     <servlet-mapping>
         <servlet-name>PublicarViaje</servlet-name>
         <url-pattern>/PublicarViaje</url-pattern>
+    </servlet-mapping>
+    <!--<servlet-mapping>
+        <servlet-name>BuscarViaje</servlet-name>
+        <url-pattern>/BuscarViaje</url-pattern>
+    </servlet-mapping>-->
+    <servlet-mapping>
+        <servlet-name>BuscarViaje</servlet-name>
+        <url-pattern>/BuscarViaje</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
